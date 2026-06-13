@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Promo Sports Hub</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand">
+          <div class="brand-mark">PS</div>
+          <div class="brand-copy">
+            <h1>Promo Sports Hub</h1>
+            <p>Июль 2026 - июнь 2027</p>
+          </div>
+          <button id="toggleSidebar" class="sidebar-toggle" type="button" aria-label="Скрыть боковое меню" title="Скрыть боковое меню">
+            <span aria-hidden="true">‹</span>
+          </button>
+        </div>
+
+        <nav class="tabs" aria-label="Разделы">
+          <button class="tab active" type="button" data-tab="sports">
+            <span aria-hidden="true">◆</span>
+            Спортивный календарь
+          </button>
+          <button class="tab" type="button" data-tab="campaigns">
+            <span aria-hidden="true">●</span>
+            Акции
+          </button>
+        </nav>
+
+        <section class="sidebar-block tab-scoped" data-visible-tab="campaigns">
+          <h2>Сегменты</h2>
+          <div id="segmentFilters" class="check-list"></div>
+        </section>
+
+        <section class="sidebar-block">
+          <h2>Рейтинг</h2>
+          <div id="ratingFilters" class="check-list compact"></div>
+        </section>
+      </aside>
+
+      <main class="workspace">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Sports event intelligence</p>
+            <h2 id="viewTitle">Спортивный календарь</h2>
+          </div>
+          <div class="topbar-actions">
+            <button id="openCampaignForm" class="primary-button tab-scoped" data-visible-tab="campaigns" type="button">Добавить акцию</button>
+          </div>
+        </header>
+
+        <section class="filters" aria-label="Фильтры календаря">
+          <label>
+            Поиск
+            <input id="searchInput" type="search" placeholder="турнир, команда, лига" />
+          </label>
+          <label>
+            Вид спорта
+            <select id="sportFilter">
+              <option value="all">Все виды спорта</option>
+            </select>
+          </label>
+          <label>
+            Период
+            <select id="monthFilter">
+              <option value="all">Весь сезон</option>
+            </select>
+          </label>
+          <label class="tab-scoped" data-visible-tab="campaigns">
+            Статус акции
+            <select id="campaignStatusFilter">
+              <option value="all">Все статусы</option>
+              <option value="planned">Планируется</option>
+              <option value="brief">Бриф</option>
+              <option value="live">Live</option>
+              <option value="done">Завершено</option>
+            </select>
+          </label>
+        </section>
+
+        <section id="sportsView" class="view active-view">
+          <section class="today-panel" aria-label="Контент на сегодня">
+            <div class="section-title-row">
+              <div>
+                <p class="eyebrow">Daily content snapshot</p>
+                <h3>Сегодня, 11 июня 2026</h3>
+              </div>
+              <span id="todaySourceCount" class="source-count">0 источников</span>
+            </div>
+            <div id="todayBoard" class="today-board"></div>
+          </section>
+          <section class="api-panel" aria-label="Автоматическая синхронизация спортивных событий">
+            <div>
+              <p class="eyebrow">Daily sports sync</p>
+              <h3>Автообновление без ручного участия</h3>
+            </div>
+            <div class="sync-stat">
+              <span>Последний синк</span>
+              <strong id="lastSyncAt">нет данных</strong>
+            </div>
+            <div class="sync-stat">
+              <span>Источник</span>
+              <strong id="syncProvider">TheSportsDB + seed</strong>
+            </div>
+            <div class="sync-stat">
+              <span>Обновлено</span>
+              <strong id="syncUpdatedCount">0</strong>
+            </div>
+            <button id="refreshCalendarData" class="ghost-button sync-refresh" type="button">Обновить</button>
+            <p id="apiStatus" class="api-status">Календарь обновляется ежедневным job-ом. Пользовательских действий не требуется.</p>
+          </section>
+          <section class="view-switcher" aria-label="Представление спортивного календаря">
+            <div>
+              <p class="eyebrow">Представление</p>
+              <h3>События сезона</h3>
+            </div>
+            <div class="segmented-control" role="group" aria-label="Выбор представления">
+              <button class="segment-button active" type="button" data-sports-mode="list">Список</button>
+              <button class="segment-button" type="button" data-sports-mode="matrix">Календарь-сетка</button>
+            </div>
+          </section>
+          <div class="summary-grid" id="summaryGrid"></div>
+          <div class="calendar-board" id="calendarBoard"></div>
+          <div class="season-matrix" id="seasonMatrix"></div>
+        </section>
+
+        <section id="campaignsView" class="view">
+          <div class="split-layout">
+            <div>
+              <h3>Акции на сезон</h3>
+              <div id="campaignList" class="campaign-list"></div>
+            </div>
+            <div>
+              <h3>Окна возможностей</h3>
+              <div id="opportunityList" class="opportunity-list"></div>
+            </div>
+          </div>
+        </section>
+
+      </main>
+    </div>
+
+    <dialog id="campaignDialog">
+      <form id="campaignForm" method="dialog">
+        <div class="dialog-head">
+          <div>
+            <p class="eyebrow">Новая механика</p>
+            <h2>Добавить акцию</h2>
+          </div>
+          <button class="icon-button" type="button" id="closeCampaignForm" aria-label="Закрыть">×</button>
+        </div>
+
+        <div class="form-grid">
+          <label>
+            Название
+            <input id="campaignName" required placeholder="Фрибетомания на ЧМ-2026" />
+          </label>
+          <label>
+            Событие
+            <select id="campaignEvent"></select>
+          </label>
+          <label>
+            Сегмент
+            <select id="campaignSegment"></select>
+          </label>
+          <label>
+            Механика
+            <select id="campaignMechanic">
+              <option>Фрибет</option>
+              <option>Кешбэк</option>
+              <option>Турнир</option>
+              <option>Спринт заданий</option>
+              <option>Prediction</option>
+              <option>Club статус</option>
+              <option>Офлайн</option>
+            </select>
+          </label>
+          <label>
+            Старт
+            <input id="campaignStart" type="date" required />
+          </label>
+          <label>
+            Конец
+            <input id="campaignEnd" type="date" required />
+          </label>
+          <label>
+            Статус
+            <select id="campaignStatus">
+              <option value="planned">Планируется</option>
+              <option value="brief">Бриф</option>
+              <option value="live">Live</option>
+              <option value="done">Завершено</option>
+            </select>
+          </label>
+          <label>
+            Владелец
+            <input id="campaignOwner" placeholder="CVM / VIP / Retail" />
+          </label>
+        </div>
+        <label>
+          Комментарий для синка
+          <textarea id="campaignNote" rows="3" placeholder="Что меняется, какой вопрос надо обсудить"></textarea>
+        </label>
+        <div class="dialog-actions">
+          <button class="ghost-button" type="button" id="seedExamples">Добавить примеры</button>
+          <button class="primary-button" type="submit">Сохранить</button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog id="eventDialog" class="event-dialog">
+      <div class="event-detail">
+        <div class="dialog-head">
+          <div>
+            <p class="eyebrow" id="eventDetailSport">Спорт</p>
+            <h2 id="eventDetailTitle">Турнир</h2>
+          </div>
+          <button class="icon-button" type="button" id="closeEventDialog" aria-label="Закрыть">×</button>
+        </div>
+        <div id="eventDetailBody"></div>
+      </div>
+    </dialog>
+
+    <script src="data/generated-events.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
