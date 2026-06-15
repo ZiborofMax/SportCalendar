@@ -1,6 +1,6 @@
 window.GENERATED_API_EVENTS = [];
 window.SPORTS_SYNC_REPORT = {
-  "syncedAt": "2026-06-14T05:26:07.820Z",
+  "syncedAt": "2026-06-15T03:06:35.917Z",
   "provider": "TheSportsDB season sync",
   "events": 0,
   "competitions": 5,
