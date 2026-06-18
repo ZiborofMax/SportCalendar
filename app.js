@@ -375,20 +375,59 @@ const SIDEBAR_STATE_KEY = "promoSportsHubSidebarCollapsed";
 
 const todaySnapshot = {
   date: "2026-06-19",
-  sourceCheckedAt: "2026-06-19T03:00:00+03:00",
+  sourceCheckedAt: "2026-06-19T00:20:00+03:00",
   items: [
     {
-      id: "today-no-live-events-2026-06-19",
-      sport: "Операционный статус",
-      competition: "Promo Sports Hub",
-      title: "На 19 июня live-событий в текущем плане нет",
-      time: "19.06, daily check",
+      id: "today-fifa-world-cup-day-9-2026-06-19",
+      sport: "Футбол",
+      competition: "FIFA World Cup 2026",
+      title: "Сегодня ЧМ-2026: Brazil-Haiti, Scotland-Morocco, Turkiye-Paraguay, USA-Australia",
+      time: "19.06, Groups C/D",
+      rating: "A+",
+      status: "Сегодня live",
+      promoAngle: "Главный инфоповод дня: второй тур групп C/D, в прайм-фокусе USA-Australia и связка матчей под all-users/live-коммуникации.",
+      supportNote: "Проверить локальное время матчей, рынки на хозяев турнира и отдельный сценарий для late-night коммуникаций по МСК.",
+      sourceLabel: "FIFA schedule",
+      sourceUrl: "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/articles/updated-fifa-world-cup-2026-match-schedule-now-available"
+    },
+    {
+      id: "today-nba-finals-closed-2026-06-19",
+      sport: "Баскетбол",
+      competition: "NBA Finals 2026",
+      title: "NBA Finals закрыт: Knicks выиграли серию 4-1",
+      time: "обновлено NBA.com 14.06",
+      rating: "A",
+      status: "Итог",
+      promoAngle: "Не планировать Game 6/7: серия завершена, актуальный угол — чемпионский контент Knicks и пост-финальные CRM-сегменты.",
+      supportNote: "Убрать из коммуникаций старые финальные сценарии и проверить settlement/ante-post по чемпионскому рынку.",
+      sourceLabel: "NBA.com",
+      sourceUrl: "https://www.nba.com/news/2026-nba-finals-schedule"
+    },
+    {
+      id: "today-nhl-final-closed-2026-06-19",
+      sport: "Хоккей",
+      competition: "NHL Stanley Cup Final",
+      title: "Stanley Cup Final закрыт: Hurricanes выиграли серию 4-2",
+      time: "обновлено NHL.com 15.06",
+      rating: "A",
+      status: "Итог",
+      promoAngle: "Финальная серия больше не live-слот: переносим хоккейный акцент на итоги, чемпионский сторителлинг и удержание NHL-аудитории.",
+      supportNote: "Снять старые live-карточки финала и проверить расчёты серии Carolina-Vegas.",
+      sourceLabel: "NHL.com",
+      sourceUrl: "https://www.nhl.com/news/topic/playoffs/2026-stanley-cup-final-schedule-television-results"
+    },
+    {
+      id: "today-f1-austria-next-2026-06-19",
+      sport: "Формула-1",
+      competition: "Formula 1",
+      title: "F1: следующий этап — Austrian GP 26-28 июня",
+      time: "26.06 - 28.06",
       rating: "B",
-      status: "Сегодня",
-      promoAngle: "Не запускать коммуникации под устаревшие события 11-12 июня; использовать день для проверки календаря и подготовки ближайших окон.",
-      supportNote: "Публичные данные обновлены, API-синк вернул 0 событий. Следующий видимый спортивный фокус в текущем плане начинается 29 июня.",
-      sourceLabel: "Sync report",
-      sourceUrl: "https://ziborofmax.github.io/SportCalendar/data/generated-events.js"
+      status: "Ближайший уикенд",
+      promoAngle: "Barcelona уже завершена; сегодня готовим weekend-layer под Австрию и не показываем старый Barcelona-preview.",
+      supportNote: "Проверить расписание практик/квалификации после публикации таймингов и подготовить VIP/weekend push.",
+      sourceLabel: "Formula1.com",
+      sourceUrl: "https://www.formula1.com/en/racing/2026"
     },
     {
       id: "today-wimbledon-readiness-2026-06-19",
@@ -402,19 +441,6 @@ const todaySnapshot = {
       supportNote: "Проверить расписание первых раундов, рынки outright и правила расчёта ante-post до запуска промо.",
       sourceLabel: "Wimbledon",
       sourceUrl: "https://www.wimbledon.com/"
-    },
-    {
-      id: "today-fifa-final-stages-readiness-2026-06-19",
-      sport: "Футбол",
-      competition: "FIFA World Cup 2026",
-      title: "ЧМ-2026: подготовить слой под июльские финальные стадии",
-      time: "01.07 - 19.07",
-      rating: "A+",
-      status: "Подготовка",
-      promoAngle: "До пикового футбольного окна осталось меньше двух недель: держать базовый offer-layer и сегментацию all-users/VIP.",
-      supportNote: "Проверить финальные даты, часовые пояса, команды после групповой стадии и fallback-коммуникации без конкретных пар.",
-      sourceLabel: "FIFA.com",
-      sourceUrl: "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/articles/updated-fifa-world-cup-2026-match-schedule-now-available"
     }
   ]
 };
