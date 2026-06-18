@@ -15,4 +15,4 @@ https://ziborofmax.github.io/SportCalendar/
 
 ## Data update
 
-The prototype includes a daily snapshot updated for June 11, 2026 and a generated sync report from TheSportsDB.
+The prototype includes a daily content snapshot and a generated sync report from TheSportsDB.
