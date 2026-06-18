@@ -374,71 +374,45 @@ const API_EVENTS_KEY = "promoSportsHubApiEvents";
 const SIDEBAR_STATE_KEY = "promoSportsHubSidebarCollapsed";
 
 const todaySnapshot = {
-  date: "2026-06-11",
-  sourceCheckedAt: "2026-06-11T18:10:00+03:00",
+  date: "2026-06-19",
+  sourceCheckedAt: "2026-06-19T03:00:00+03:00",
   items: [
     {
-      id: "today-fifa-world-cup-opening-day",
-      sport: "Футбол",
-      competition: "FIFA World Cup 2026",
-      title: "Старт ЧМ-2026: Mexico vs South Africa + Korea Republic vs Czechia",
-      time: "11.06, Group A",
-      rating: "A+",
-      status: "Сегодня live",
-      promoAngle: "Главный спортивный инфоповод дня: открытие турнира, высокий массовый спрос и понятный повод для all-users коммуникации.",
-      supportNote: "Поддержке нужен FAQ по часовым поясам, двум матчам дня, рынкам на матч открытия и расписанию ближайших игр хозяев.",
-      sourceLabel: "FIFA.com",
-      sourceUrl: "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/articles/updated-fifa-world-cup-2026-match-schedule-now-available"
-    },
-    {
-      id: "today-nhl-stanley-cup-game-5",
-      sport: "Хоккей",
-      competition: "NHL Stanley Cup Final",
-      title: "Game 5: Vegas Golden Knights @ Carolina Hurricanes",
-      time: "11.06, 8:00 PM ET / ночь 12.06 МСК",
-      rating: "A",
-      status: "Сегодня live",
-      promoAngle: "Серия 2-2 перед Game 5: сильный ночной live для VIP Club, хоккейной аудитории и реактивации через финальную серию.",
-      supportNote: "Следить за поздним стартом по МСК и повышенной нагрузкой после матча: возможны вопросы по live-расчётам и сериям рынков.",
-      sourceLabel: "NHL.com",
-      sourceUrl: "https://www.nhl.com/news/topic/playoffs/2026-stanley-cup-final-schedule-television-results"
-    },
-    {
-      id: "today-nba-finals-game-5-prep",
-      sport: "Баскетбол",
-      competition: "NBA Finals 2026",
-      title: "Knicks vs Spurs: подготовка к Game 5",
-      time: "Game 5: 13.06, 8:30 PM ET / ночь 14.06 МСК",
-      rating: "A",
-      status: "Подготовка",
-      promoAngle: "Knicks ведут 3-1, Game 5 может стать титульным матчем: готовим pre-match, VIP-линии и напоминания за сутки.",
-      supportNote: "Game 5 не сегодня, но сегодня нужно проверить коммуникации после камбэка Knicks и сценарии, если серия закончится 13 июня.",
-      sourceLabel: "NBA.com",
-      sourceUrl: "https://www.nba.com/news/2026-nba-finals-schedule"
-    },
-    {
-      id: "today-f1-barcelona-preview",
-      sport: "Формула-1",
-      competition: "Formula 1",
-      title: "Barcelona-Catalunya GP: старт уикенда завтра",
-      time: "12.06 - 14.06",
+      id: "today-no-live-events-2026-06-19",
+      sport: "Операционный статус",
+      competition: "Promo Sports Hub",
+      title: "На 19 июня live-событий в текущем плане нет",
+      time: "19.06, daily check",
       rating: "B",
-      status: "Грядущее",
-      promoAngle: "После старта ЧМ это второй weekend-слот: можно держать F1 как дополнительный слой для VIP и weekend-аудитории.",
-      supportNote: "Подсветить расписание практик/квалификации и не смешивать коммуникации с матчами открытия ЧМ.",
-      sourceLabel: "Formula1.com",
-      sourceUrl: "https://www.formula1.com/en/racing/2026"
+      status: "Сегодня",
+      promoAngle: "Не запускать коммуникации под устаревшие события 11-12 июня; использовать день для проверки календаря и подготовки ближайших окон.",
+      supportNote: "Публичные данные обновлены, API-синк вернул 0 событий. Следующий видимый спортивный фокус в текущем плане начинается 29 июня.",
+      sourceLabel: "Sync report",
+      sourceUrl: "https://ziborofmax.github.io/SportCalendar/data/generated-events.js"
     },
     {
-      id: "today-fifa-hosts-day-2",
+      id: "today-wimbledon-readiness-2026-06-19",
+      sport: "Теннис",
+      competition: "Wimbledon 2026",
+      title: "Wimbledon: подготовить коммуникации к старту 29 июня",
+      time: "29.06 - 12.07",
+      rating: "A",
+      status: "Ближайший фокус",
+      promoAngle: "Есть 10 дней до старта основной сетки: подготовить pre-launch, VIP-подборки и недельный план live-механик.",
+      supportNote: "Проверить расписание первых раундов, рынки outright и правила расчёта ante-post до запуска промо.",
+      sourceLabel: "Wimbledon",
+      sourceUrl: "https://www.wimbledon.com/"
+    },
+    {
+      id: "today-fifa-final-stages-readiness-2026-06-19",
       sport: "Футбол",
       competition: "FIFA World Cup 2026",
-      title: "Завтра: первые матчи Canada и USA",
-      time: "12.06, Group B / Group D",
+      title: "ЧМ-2026: подготовить слой под июльские финальные стадии",
+      time: "01.07 - 19.07",
       rating: "A+",
-      status: "Грядущее",
-      promoAngle: "После матча открытия нужно удержать внимание: Canada и USA как хосты дают понятный второй коммуникационный пик.",
-      supportNote: "Проверить расписание 12 июня, локальные названия стадионов и корректность пушей по часовым поясам.",
+      status: "Подготовка",
+      promoAngle: "До пикового футбольного окна осталось меньше двух недель: держать базовый offer-layer и сегментацию all-users/VIP.",
+      supportNote: "Проверить финальные даты, часовые пояса, команды после групповой стадии и fallback-коммуникации без конкретных пар.",
       sourceLabel: "FIFA.com",
       sourceUrl: "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/articles/updated-fifa-world-cup-2026-match-schedule-now-available"
     }
@@ -955,7 +929,11 @@ function render() {
 function renderTodaySnapshot() {
   const board = document.getElementById("todayBoard");
   const count = document.getElementById("todaySourceCount");
+  const title = document.getElementById("todaySnapshotTitle");
   if (!board || !count) return;
+  if (title) {
+    title.textContent = `Сегодня, ${formatSnapshotDate(todaySnapshot.date)}`;
+  }
   const sourceCount = new Set(todaySnapshot.items.map((item) => item.sourceUrl)).size;
   count.textContent = `${sourceCount} источников`;
   board.innerHTML = todaySnapshot.items.map((item) => `
@@ -977,6 +955,14 @@ function renderTodaySnapshot() {
       <a class="source-link" href="${item.sourceUrl}" target="_blank" rel="noreferrer">${item.sourceLabel}</a>
     </article>
   `).join("");
+}
+
+function formatSnapshotDate(date) {
+  return new Date(`${date}T12:00:00+03:00`).toLocaleDateString("ru-RU", {
+    day: "numeric",
+    month: "long",
+    year: "numeric"
+  });
 }
 
 function renderSyncStatus() {
